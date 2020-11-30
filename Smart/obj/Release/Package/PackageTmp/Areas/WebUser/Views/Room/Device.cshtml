@@ -1,0 +1,35 @@
+﻿@using Model
+@model Model.UserDto
+@{
+    Layout = "~/Areas/WebUser/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/SignalR/Hubs"></script>
+<script type="text/javascript" src="~/Scripts/MQTT.js"></script>
+
+@Html.HiddenFor(a => a.Username, new { id = "hfUserName" })
+@Html.HiddenFor(a => a.HomeClientId, new { id = "hfClientId" })
+@Html.HiddenFor(a => a.Topic, new { id = "hfTopic" })
+@Html.Hidden("hfRoomRef", (object)ViewBag.room.Lref.ToString(), new { @id = "hfRoomRef" })
+
+<div class="row margin-top-10">
+    @{
+        foreach (var item in ViewBag.device)
+        {
+            var device = new RoomDeviceValueDto
+            {
+                DeviceType = item.DeviceType,
+                Lref = item.Lref,
+                DeviceRef = item.DeviceRef,
+                Value = item.Value,
+                DeviceName = item.DeviceName,
+                BetweenValue = item.BetweenValue,
+                UpdateTime = item.UpdateTime,
+                PinNr = item.PinNr,
+                RoomRef = item.RoomRef
+            };
+
+            Html.RenderPartial(device.DeviceType, device);
+        }
+    }
+</div>

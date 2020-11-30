@@ -1,0 +1,78 @@
+﻿@using Model
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="tabbable tabbable-custom tabbable-noborder tabbable-reversed">
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="#tab_0" data-toggle="tab">
+                        Tüm Odalar
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab_0">
+                    <div class="portlet box yellow">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-user"></i>Tüm Odalar
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            <table class="table table-striped table-bordered table-hover" id="sample_2">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        Blok
+                                    </th>
+                                    <th>
+                                        Evin Adı
+                                    </th>
+                                    <th>
+                                        Oda Adı
+                                    </th>
+                                    <th>
+                                        Durumu
+                                    </th>
+                                    <th>
+                                        #
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in ViewBag.List)
+                                    {
+                                        <tr class="odd gradeX">
+                                            <td>
+                                                @item.BLOKNAME
+                                            </td>
+                                            <td>
+                                                @item.HOMENAME
+                                            </td>
+                                            <td>
+                                                @item.NAME
+                                            </td>
+                                            <td>
+                                                <span class="label label-sm label-@(item.STATUS == 0 ? "warning" : "success")">
+                                                    @(item.STATUS == (int)StaticValues.StatusType.Deactive ? "Deactive" : "Active")
+                                                </span>
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Edit", "Edit", "Room", new { id = item.LREF }, null)/ @Html.ActionLink("Delete", "Delete", "Room", new { id = item.LREF }, new { @onclick = "return confirm('Do you confirm the deletion?');" })
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

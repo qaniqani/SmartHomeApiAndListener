@@ -1,0 +1,74 @@
+﻿@model System.Collections.Generic.IEnumerable<Model.GETHOMEDETECTOR>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/WebUser/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/SignalR/Hubs"></script>
+<script type="text/javascript" src="~/Scripts/MQTT.js"></script>
+
+<input type="hidden" value="@ViewBag.User.Username" id="hfUserName" />
+<input type="hidden" value="@ViewBag.User.HomeClientId" id="hfClientId" />
+<input type="hidden" value="@ViewBag.User.Topic" id="hfTopic" />
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="tabbable tabbable-custom tabbable-noborder tabbable-reversed">
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="#tab_0" data-toggle="tab">
+                        Dashboard
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab_0">
+                    <div class="portlet box green">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-gift"></i> Sensörler
+                            </div>
+                            <div class="tools">
+                                <a href="javascript:;" class="collapse">
+                                </a>
+                                <a href="javascript:;" class="reload">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="portlet-body form">
+                            <!-- BEGIN FORM-->
+                                @{
+                                    int step = 0;
+                                    foreach (var item in Model)
+                                    {
+                                        step++;
+                                        var device = new Model.RoomDeviceValueDto
+                                        {
+                                            DeviceType = item.DEVICETYPE,
+                                            Lref = item.LREF,
+                                            DeviceRef = item.DEVICEREF,
+                                            Value = item.VALUE,
+                                            DeviceName = item.DEVICENAME,
+                                            BetweenValue = item.BETWEENVALUE,
+                                            UpdateTime = item.UPDATETIME,
+                                            PinNr = item.PINNR,
+                                            RoomRef = item.ROOMREF
+                                        };
+
+                                        Html.RenderPartial("~/Areas/WebUser/Views/Room/" + device.DeviceType + ".cshtml", device);
+                                        if ((step%4) == 0)
+                                        {
+                                            <div class="clearfix"></div>
+                                        }
+                                    }
+                                }
+                                <!-- END FORM-->
+                                <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

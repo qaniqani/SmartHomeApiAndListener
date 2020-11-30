@@ -1,0 +1,53 @@
+﻿@using Model
+<ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+    <li class="start">
+        <a href="/Webuser/Dashboard/Index">
+            <i class="icon-home"></i>
+            <span class="title">Dashboard</span>
+        </a>
+    </li>
+    <li class="active">
+        <a href="javascript:;">
+            <i class="fa fa-th"></i>
+            <span class="title">Odalar</span>
+            <span class="arrow "></span>
+        </a>
+        <ul class="sub-menu">
+            @foreach (var item in Model)
+            {
+                <li>
+                    <a href="@Url.Action("Device", "Room")/@item.Lref"><i class='fa fa-arrow-circle-o-right'></i> @item.Name</a>
+                    @*<a href="/Room/Device/@item.LREF">
+                            <i class="icon-home"></i>
+                            @item.NAME
+                        </a>*@
+                </li>
+            }
+        </ul>
+    </li>
+    @{
+        var user = ViewBag.User as UserDto;
+        if (user != null)
+        {
+            if (user.UserType != 3)
+            {
+                <li class="last">
+                    <a href="javascript:;">
+                        <i class="icon-basket"></i>
+                        <span class="title">Kullanıcılar</span>
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+
+                        <li>
+                            @Html.ActionLink("Tanımlama", "Add", "User")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Düzenleme/ Silme", "List", "User")
+                        </li>
+                    </ul>
+                </li>
+            }
+        }
+    }
+</ul>

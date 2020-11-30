@@ -1,0 +1,106 @@
+﻿@model Model.HOMEDEVICETYPE
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    $(window).load(function () {
+        $("#STATUS").select2("val", $("#STATUS_").val());
+        $("#DEVICETYPE").select2("val", $("#DEVICETYPE_").val());
+        $("#ISDETECTOR").select2("val", $("#ISDETECTOR_").val());
+    });
+</script>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="tabbable tabbable-custom tabbable-noborder tabbable-reversed">
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="#tab_0" data-toggle="tab">
+                        Cihaz Tipi Güncelleme
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab_0">
+                    <div class="portlet box green">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-gift"></i> Cihaz Tipi Güncelleme
+                            </div>
+                            <div class="tools">
+                                <a href="javascript:;" class="collapse">
+                                </a>
+                                <a href="javascript:;" class="reload">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="portlet-body form">
+                            <!-- BEGIN FORM-->
+                            <form action="@Request.RawUrl" method="POST" class="form-horizontal">
+                                <div class="form-body">
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Çalışma Prensibi</label>
+                                        <div class="col-md-4">
+                                            @Html.HiddenFor(model => model.LREF)
+                                            @Html.HiddenFor(model => model.DEVICETYPE, new { @id = "DEVICETYPE_", Name = "DEVICETYPE_" })
+                                            @Html.HiddenFor(model => model.ISDETECTOR, new { @id = "ISDETECTOR_", Name = "ISDETECTOR_" })
+                                            @Html.HiddenFor(model => model.STATUS, new { @id = "STATUS_", Name = "STATUS_" })
+                                            @Html.DropDownList("DEVICETYPE", ViewBag.DeviceType as SelectList, new {@class = "select2me form-control"})
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Cihaz Adı</label>
+                                        <div class="col-md-4">
+                                            @Html.TextBoxFor(model => model.NAME, new { @class = "form-control input-circle", @placeholder = "Cihaz adını giriniz" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Çalışma Aralığı</label>
+                                        <div class="col-md-4">
+                                            @Html.TextBoxFor(model => model.BETWEENVALUE, new { @class = "form-control input-circle", @placeholder = "0-1 || 0-255" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Pin Numarası</label>
+                                        <div class="col-md-4">
+                                            @Html.TextBoxFor(model => model.PINNR, new {@class = "form-control input-circle", @placeholder = "1, 2, 3, 4... || A0, A1, A2"})
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Sensör mü?</label>
+                                        <div class="col-md-4">
+                                            @Html.DropDownList("ISDETECTOR", ViewBag.IsDetector as SelectList, new { @class = "select2me form-control" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Sıra No</label>
+                                        <div class="col-md-4">
+                                            @Html.TextBoxFor(model => model.SEQUENCENR, new { @class = "form-control input-circle" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Durumu</label>
+                                        <div class="col-md-4">
+                                            @Html.DropDownList("STATUS", ViewBag.Status as SelectList, new { @class = "select2me form-control" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <div class="row">
+                                        <div class="col-md-offset-3 col-md-9">
+                                            <button type="submit" class="btn btn-circle blue">Kaydet</button>
+                                            <button type="button" class="btn btn-circle default">İptal</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- END FORM-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+D:\Projects\SmartHome\Smart\Messaging\bin\Debug\Messaging.dll
+D:\Projects\SmartHome\Smart\Messaging\bin\Debug\Messaging.pdb
+D:\Projects\SmartHome\Smart\Messaging\bin\Debug\M2Mqtt.dll
+D:\Projects\SmartHome\Smart\Messaging\obj\Debug\Messaging.csprojResolveAssemblyReference.cache
+D:\Projects\SmartHome\Smart\Messaging\obj\Debug\Messaging.dll
+D:\Projects\SmartHome\Smart\Messaging\obj\Debug\Messaging.pdb
+D:\Projects\SmartHome\Smart\Messaging\bin\Debug\Model.dll
+D:\Projects\SmartHome\Smart\Messaging\bin\Debug\Model.pdb

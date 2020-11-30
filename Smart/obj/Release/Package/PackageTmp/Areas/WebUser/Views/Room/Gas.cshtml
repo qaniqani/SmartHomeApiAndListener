@@ -1,0 +1,45 @@
+﻿@model Model.RoomDeviceValueDto
+
+@{
+    var lref = Model.DeviceRef;
+}
+
+<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    <div class="dashboard-stat2" id="dashboard-stat_@lref" data-lref="@lref">
+        <input type="hidden" id="hfLref_@lref" value="@Model.Lref" />
+        <input type="hidden" id="hfDeviceRef_@lref" value="@Model.DeviceRef" />
+        <input type="hidden" id="hfDeviceName_@lref" value="@Model.DeviceName" />
+        <input type="hidden" id="hfDeviceType_@lref" value="@Model.DeviceType" />
+        <input type="hidden" id="hfBetweenValue_@lref" value="@Model.BetweenValue" />
+        <input type="hidden" id="hfPinNr_@lref" value="@Model.PinNr" />
+        <input type="hidden" id="hfValue_@lref" value="@Model.Value"/>
+        <input type="hidden" id="hfRoomRef_@lref" value="@Model.RoomRef" />
+        <div class="display">
+            <div class="number">
+                <h3 class="font-green-sharp">@Model.DeviceName</h3>
+            </div>
+            <div class="icon">
+                <i class="fa fa-cloud"></i>
+            </div>
+        </div>
+        <div class="progress-info">
+            <div class="progress" id="progress_@lref">
+                <span style="width: @Model.Value%;" class="progress-bar progress-bar-success green-sharp">
+                    <span class="sr-only">@Model.Value% progress</span>
+                </span>
+            </div>
+            <div class="status">
+                <div class="status-title">
+                    Durum
+                </div>
+                <div class="status-number" id="status-number_@lref">
+                    @Model.Value%
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div>
+            <a href="javascript:;" class="btn btn-info read" data-lref="@lref"><i class="fa fa-exchange"></i> Tekrar Ölç</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,6 @@
+D:\Projects\SmartHome\Smart\Model\bin\Model.dll.config
+D:\Projects\SmartHome\Smart\Model\bin\Model.dll
+D:\Projects\SmartHome\Smart\Model\bin\Model.pdb
+D:\Projects\SmartHome\Smart\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+D:\Projects\SmartHome\Smart\Model\obj\Debug\Model.dll
+D:\Projects\SmartHome\Smart\Model\obj\Debug\Model.pdb

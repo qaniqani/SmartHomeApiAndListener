@@ -1,0 +1,38 @@
+﻿@model Model.RoomDeviceValueDto
+
+@{
+    var lref = Model.DeviceRef;
+}
+
+<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+    <div class="dashboard-stat2" id="dashboard-stat_@lref" data-lref="@lref">
+        <input type="hidden" id="hfLref_@lref" value="@Model.Lref" />
+        <input type="hidden" id="hfDeviceRef_@lref" value="@Model.DeviceRef" />
+        <input type="hidden" id="hfDeviceName_@lref" value="@Model.DeviceName" />
+        <input type="hidden" id="hfDeviceType_@lref" value="@Model.DeviceType" />
+        <input type="hidden" id="hfBetweenValue_@lref" value="@Model.BetweenValue" />
+        <input type="hidden" id="hfPinNr_@lref" value="@Model.PinNr" />
+        <input type="hidden" id="hfValue_@lref" value="@Model.Value" />
+        <input type="hidden" id="hfRoomRef_@lref" value="@Model.RoomRef" />
+        <div class="display">
+            <div class="number">
+                <h3 class="font-green-sharp">@Model.DeviceName</h3>
+                <small>Durumu: <span></span></small>
+            </div>
+            <div class="icon">
+                <i class="fa fa-th-large"></i>
+            </div>
+        </div>
+        <div>
+            <a href="javascript:;" class="btn btn-success change" data-lref="@Model.DeviceRef" @(Model.Value == 0 ? "" : "disabled")>
+                <i class="fa fa-sort-amount-desc"></i> Aç
+            </a>
+            <a href="javascript:;" class="btn btn-danger change" data-lref="@Model.DeviceRef" @(Model.Value == 1 ? "" : "disabled")>
+                <i class="fa fa-sort-amount-asc"></i> Kapat
+            </a>
+            <a href="javascript:;" class="btn btn-info change" data-lref="@Model.DeviceRef">
+                <i class="fa fa-stop"></i> Durdur
+            </a>
+        </div>
+    </div>
+</div>
